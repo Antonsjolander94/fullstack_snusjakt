@@ -8,17 +8,16 @@ router
   .get(SupplierController.index)
   .post(SupplierController.newSupplier);
 
-// /suppliers/:id
+// /:supplerId
 router
   .route("/:supplierId")
-  .get(SupplierController.getSupplier)
-  .put(SupplierController.replaceSupplier)
-  .patch(SupplierController.updateSupplier)
+  .get(SupplierController.getSupplierById)
+  .patch(SupplierController.replaceSupplier)
+  .put(SupplierController.updateSupplier)
   .delete(SupplierController.deleteSupplier);
 
 router
-  .route("/:supplierId/products")
-  .get(SupplierController.getSupplierProducts)
-  .post(SupplierController.newSupplierProduct);
+  .route("/:supplierId/:productId")
+  .post(SupplierController.addNewPriceToSupplierProduct);
 
 module.exports = router;

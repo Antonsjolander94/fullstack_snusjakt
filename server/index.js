@@ -7,10 +7,9 @@ const app = express();
 
 // Connect to MongoDB
 mongoose.connect(
-  "mongodb://apax94:Extra112!@ds347707.mlab.com:47707/fullstack_snusjakt",
+  "mongodb://apax94:Extra112!@ds217976.mlab.com:17976/fullstack_snusjakt",
   {
-    useNewUrlParser: true,
-    useFindAndModify: false
+    useNewUrlParser: true
   }
 );
 
@@ -18,14 +17,13 @@ mongoose.connect(
 app.use(bodyParser.json());
 app.use(cors());
 
-//Init routes
-//app.use("/api", require("./routes/api"));
-
 //Routes
+const price = require("./routes/price");
 const product = require("./routes/product");
 const supplier = require("./routes/supplier");
 
 //Routes
+app.use("/prices", price);
 app.use("/products", product);
 app.use("/suppliers", supplier);
 

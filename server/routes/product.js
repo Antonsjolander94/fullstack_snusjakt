@@ -8,17 +8,10 @@ router
   .get(ProductController.index)
   .post(ProductController.newProduct);
 
-// /products/:id
+// /:productId
 router
   .route("/:productId")
-  .get(ProductController.getProduct)
-  .put(ProductController.replaceProduct)
-  .patch(ProductController.updateProduct)
-  .delete(ProductController.deleteProduct);
-
-router
-  .route("/:productId/suppliers")
-  .get(ProductController.getProductSuppliers)
-  .post(ProductController.newProductSupplier);
-
+  .get(ProductController.getProductById)
+  .put(ProductController.updateProduct)
+  .patch(ProductController.replaceProduct);
 module.exports = router;

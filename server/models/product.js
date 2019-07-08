@@ -2,34 +2,26 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const ProductSchema = new Schema({
-  title: {
-    type: String,
-    required: [true, "Title is required"]
-  },
-  price: {
-    type: Number,
-    required: [true, "Price is required"]
-  },
-  ranking: {
-    type: Number,
-    required: true
-  },
-  categories: [{ type: Schema.Types.ObjectId, ref: "category" }],
-  suppliers: [{ type: Schema.Types.ObjectId, ref: "supplier" }],
-  created: { type: Date, default: Date.now },
-  updated: { type: Date, default: Date.now }
+  name: { type: String, required: true },
+  information: { type: String, required: true },
+  image: { type: String, required: false },
+  rating: { type: Number, required: true },
+  prices: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "price"
+    }
+  ],
+  created_at: { type: Date, default: Date.now },
+  updated_at: Date
 });
 
-// Getter
-ProductSchema.path("price").get(function(num) {
-  return (num / 100).toFixed(2);
-});
-
-// Setter
-ProductSchema.path("price").set(function(num) {
-  return num * 100;
+ProductSchema.pre("save", function(next) {
+  var currentDate = new Date();
+  this.updated_at = currentDate;
+  if (!this.created_at) this.created_at = currentDate;
+  next();
 });
 
 const Product = mongoose.model("product", ProductSchema);
-
 module.exports = Product;
