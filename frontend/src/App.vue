@@ -1,20 +1,30 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <Navbar />
+    {{ new Date() | moment("LLL") }}
+    <b-container>
+      <b-row>
+        <b-col cols="12">
+          <router-view />
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<script>
+import Navbar from "./components/Navbar/Navbar";
+export default {
+  components: {
+    Navbar
+  },
+  data() {
+    return {
+      datim: Date.now()
+    };
+  }
+};
+</script>
+
+<style lang="scss" >
 </style>

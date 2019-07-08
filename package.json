@@ -10,12 +10,19 @@
   "author": "Anton Sjölander",
   "license": "MIT",
   "dependencies": {
+    "@hapi/joi": "^15.1.0",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
+    "dotenv": "^8.0.0",
     "express": "^4.17.1",
     "express-async-handler": "^1.1.4",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.24.0",
+    "moment-timezone": "^0.5.26",
     "mongodb": "^3.2.7",
-    "mongoose": "^5.6.3"
+    "mongoose": "^5.6.3",
+    "node-time": "^0.1.0"
   },
   "devDependencies": {
     "nodemon": "^1.19.1"

@@ -2,16 +2,16 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 const app = express();
 
 // Connect to MongoDB
-mongoose.connect(
-  "mongodb://apax94:Extra112!@ds217976.mlab.com:17976/fullstack_snusjakt",
-  {
-    useNewUrlParser: true
-  }
-);
+mongoose.connect(process.env.DB_CONNECT, {
+  useNewUrlParser: true
+});
 
 //Middleware
 app.use(bodyParser.json());
@@ -21,11 +21,13 @@ app.use(cors());
 const price = require("./routes/price");
 const product = require("./routes/product");
 const supplier = require("./routes/supplier");
+const user = require("./routes/user");
 
 //Routes
 app.use("/prices", price);
 app.use("/products", product);
 app.use("/suppliers", supplier);
+app.use("/user", user);
 
 const port = process.env.PORT || 5000;
 

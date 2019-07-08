@@ -1,3 +1,3 @@
 let url = process.env.VUE_APP_URL;
 
-console.log(url);
+console.log(axios);
